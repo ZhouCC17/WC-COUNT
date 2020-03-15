@@ -61,7 +61,7 @@ void LineCount(char File[]){
 		   } 
     	}
         fclose(f);
-        printf("文件的行数为:%d\n",count);
+        printf("此文件的行数为:%d\n",count);
         system("pause");
 }
 
