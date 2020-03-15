@@ -4,51 +4,51 @@
 #include <ctype.h>
 void Character(char File[])              //字符数统计函数
 {
-        int count=0;            //字符数计数变量 
         char c;
+		int num=0;            //字符数计数变量 
         FILE *f=fopen(File,"r");
         if(!f){
-                printf("打开文件出错，请重试\n");
+                printf("打开文件出错，请重试!\n");
                 return ;
         }
         while((c=fgetc(f))!=EOF)
         {
                 if(!isspace(c))   //测试参数是否是空格、制表符或换行符 
-                count++;
+                num++;
         }
+        printf("此文件的字符数为:%d\n",num);
         fclose(f);
-        printf("此文件的字符数为:%d\n",count);
         system("pause");
 }
 
 void Word(char File[]){                //单词数统计函数 
-        int count=0;            //单词数计数变量 
         char c;
+        int num=0;            //单词数计数变量 
         FILE *f=fopen(File,"r");
         if(!f){
-                printf("打开文件出错，请重试\n");
+                printf("打开文件出错，请重试!\n");
                 return ;
         }
         while((c=fgetc(f))!=EOF)
         {
                 if((c>='A'&&c<='Z')||(c>='a'&&c<='z')){
-                	count++;  
+                	num++;  
                    do{
                    	c=fgetc(f);
 				   }while((c>='A'&&c<='Z')||(c>='a'&&c<='z'));      //通过检测是否是连续字符对单词计数 
                 }
         }
+        printf("此文件的单词数为:%d\n",num);
         fclose(f);
-        printf("此文件的单词数为:%d\n",count);
         system("pause");
 }
 
 void Line(char File[]){
-        int count=0;            //行数计数变量 
-        char c[100];
+	    char c[100];
+        int num=0;            //行数计数变量 
         FILE *f=fopen(File,"r");
         if(!f){
-                printf("打开文件出错，请重试\n");
+                printf("打开文件出错，请重试!\n");
                 return ;
         }
         getc(f);        
@@ -58,11 +58,11 @@ void Line(char File[]){
 			while(!feof(f)){
                 fgets(c,100,f);
                 if(c[0]=='\0')    break;  //每行开头是'\0'则是空行 
-                count++; 
+                num++; 
 		   } 
     	}
         fclose(f);
-        printf("此文件的行数为:%d\n",count);
+        printf("此文件的行数为:%d\n",num);
         system("pause");
 }
 
@@ -87,13 +87,10 @@ int main()
         printf("请输入文件地址:");
         scanf("%s",file);
         switch(parameter){          //采用选择结构进行处理 
-                case 'c': Character(file);
-                          break;
-                case 'w': Word(file);
-                          break;
-                case 'l': Line(file);
-                          break;
-                default : break;                                
+                case 'c': Character(file);   break;
+                case 'w': Word(file);    break;
+                case 'l': Line(file);    break;
+                default :   break;                                
         }
     }
 } 
