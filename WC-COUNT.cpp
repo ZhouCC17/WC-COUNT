@@ -66,7 +66,7 @@ void Line(char File[]){
         system("pause");
 }
                        
-void Other(char File[]){ 
+void Other(char File[]){    //其他功能函数 
         int num1=0;        //注释行行数
 		int num2=0;       //空行行数
 		int num3=0;       //代码行行数 
