@@ -5,15 +5,15 @@
 void CharacterCount(char File[])              //字符数统计函数
 {
         int count=0;            //字符数计数变量 
-        char ch;
+        char c;
         FILE *f=fopen(File,"r");
         if(f==NULL){
                 printf("打开文件出错，请重试\n");
                 return ;
         }
-        while((ch=fgetc(f))!=EOF)
+        while((c=fgetc(f))!=EOF)
         {
-                if(isspace(ch)==0)   //测试参数是否是空格、制表符或换行符 
+                if(isspace(c)==0)   //测试参数是否是空格、制表符或换行符 
                 ++count;
         }
         fclose(f);
@@ -23,18 +23,18 @@ void CharacterCount(char File[])              //字符数统计函数
 
 void WordCount(char File[]){                //单词数统计函数 
         int count=0;            //单词数计数变量 
-        char ch;
+        char c;
         FILE *f=fopen(File,"r");
         if(f==NULL){
                 printf("打开文件出错，请重试\n");
                 return ;
         }
-        while((ch=fgetc(f))!=EOF)
+        while((c=fgetc(f))!=EOF)
         {
-                if((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')){
-                        while((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))       //通过检测是否是连续字符对单词计数 
-                        ch=fgetc(f);
-                        ++count;
+                if((c>='A'&&c<='Z')||(c>='a'&&c<='z')){
+                        while((c>='A'&&c<='Z')||(c>='a'&&c<='z'))       //通过检测是否是连续字符对单词计数 
+                        c=fgetc(f);
+                        count++; 
                 }
         }
         fclose(f);
@@ -44,7 +44,7 @@ void WordCount(char File[]){                //单词数统计函数
 
 void LineCount(char File[]){
         int count=0;            //行数计数变量 
-        char ch[500];
+        char c[100];
         FILE *f=fopen(File,"r");
         if(f==NULL){
                 printf("打开文件出错，请重试\n");
@@ -55,8 +55,8 @@ void LineCount(char File[]){
 		else{
 			rewind(f);    //将光标跳回到文件开头 
 			while(!feof(f)){
-                fgets(ch,500,f);
-                if(ch[0]=='\0')    break;  //每行开头是'\0'则是空行 
+                fgets(c,100,f);
+                if(c[0]=='\0')    break;  //每行开头是'\0'则是空行 
                 count++; 
 		   } 
     	}
