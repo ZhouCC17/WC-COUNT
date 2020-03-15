@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-void CharacterCount(char File[])              //字符数统计函数
+void Character(char File[])              //字符数统计函数
 {
         int count=0;            //字符数计数变量 
         char c;
@@ -21,7 +21,7 @@ void CharacterCount(char File[])              //字符数统计函数
         system("pause");
 }
 
-void WordCount(char File[]){                //单词数统计函数 
+void Word(char File[]){                //单词数统计函数 
         int count=0;            //单词数计数变量 
         char c;
         FILE *f=fopen(File,"r");
@@ -43,7 +43,7 @@ void WordCount(char File[]){                //单词数统计函数
         system("pause");
 }
 
-void LineCount(char File[]){
+void Line(char File[]){
         int count=0;            //行数计数变量 
         char c[100];
         FILE *f=fopen(File,"r");
@@ -87,11 +87,11 @@ int main()
         printf("请输入文件地址:");
         scanf("%s",file);
         switch(parameter){          //采用选择结构进行处理 
-                case 'c': CharacterCount(file);
+                case 'c': Character(file);
                           break;
-                case 'w': WordCount(file);
+                case 'w': Word(file);
                           break;
-                case 'l': LineCount(file);
+                case 'l': Line(file);
                           break;
                 default : break;                                
         }
