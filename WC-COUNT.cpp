@@ -7,14 +7,14 @@ void CharacterCount(char File[])              //字符数统计函数
         int count=0;            //字符数计数变量 
         char c;
         FILE *f=fopen(File,"r");
-        if(f==NULL){
+        if(!f){
                 printf("打开文件出错，请重试\n");
                 return ;
         }
         while((c=fgetc(f))!=EOF)
         {
-                if(isspace(c)==0)   //测试参数是否是空格、制表符或换行符 
-                ++count;
+                if(!isspace(c))   //测试参数是否是空格、制表符或换行符 
+                count++;
         }
         fclose(f);
         printf("此文件的字符数为:%d\n",count);
@@ -25,16 +25,17 @@ void WordCount(char File[]){                //单词数统计函数
         int count=0;            //单词数计数变量 
         char c;
         FILE *f=fopen(File,"r");
-        if(f==NULL){
+        if(!f){
                 printf("打开文件出错，请重试\n");
                 return ;
         }
         while((c=fgetc(f))!=EOF)
         {
                 if((c>='A'&&c<='Z')||(c>='a'&&c<='z')){
-                        while((c>='A'&&c<='Z')||(c>='a'&&c<='z'))       //通过检测是否是连续字符对单词计数 
-                        c=fgetc(f);
-                        count++; 
+                	count++;  
+                   do{
+                   	c=fgetc(f);
+				   }while((c>='A'&&c<='Z')||(c>='a'&&c<='z'));      //通过检测是否是连续字符对单词计数 
                 }
         }
         fclose(f);
@@ -46,7 +47,7 @@ void LineCount(char File[]){
         int count=0;            //行数计数变量 
         char c[100];
         FILE *f=fopen(File,"r");
-        if(f==NULL){
+        if(!f){
                 printf("打开文件出错，请重试\n");
                 return ;
         }
