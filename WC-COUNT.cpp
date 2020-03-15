@@ -100,7 +100,7 @@ void Other(char File[]){    //其他功能函数
     }
 
 
-int main()
+int main()                     //主函数 
 {
     char parameter;               //命令参数 
     char file[50];              //记录文件地址
